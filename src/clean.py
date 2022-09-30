@@ -2,6 +2,7 @@ import shutil
 from cleaning.account import clean_account
 from cleaning.card_dev import clean_card_dev
 from cleaning.loan_dev import clean_loan_dev
+from cleaning.trans_dev import clean_trans_dev
 
 RAW_PATH = "../assets/raw/"
 CLEAN_PATH = "../assets/clean/"
@@ -22,3 +23,6 @@ shutil.copy(RAW_PATH + "district.csv", CLEAN_PATH + "district.csv")
 
 print("Cleaning loan_dev.csv ...")
 clean_loan_dev(RAW_PATH + "loan_dev.csv", CLEAN_PATH + "loan_dev.csv")
+
+print("Cleaning trans_dev.csv ...")
+clean_trans_dev(RAW_PATH + "trans_dev.csv", CLEAN_PATH + "trans_dev.csv")
