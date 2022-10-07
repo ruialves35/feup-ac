@@ -5,7 +5,6 @@
   - monthly issuance
   - issuance after transaction
 
-
 ## Transaction
 
 ### Type 

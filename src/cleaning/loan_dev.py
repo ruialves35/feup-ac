@@ -14,4 +14,4 @@ def clean_loan_dev(rawPath, cleanPath):
     df['status'] = df['status'].cat.add_categories([0])
     df.loc[df.status == "-1", "status"] = 0
     df = df.rename(columns={"status": "paid"})
-    df.to_csv(cleanPath, index=False)
+    df.to_csv(cleanPath, sep=",", index=False)
