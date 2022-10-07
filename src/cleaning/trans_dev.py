@@ -13,6 +13,7 @@ def clean_trans_dev(rawPath, cleanPath):
         "bank": "category",
         "account": "object"
     })
+
     df['date'] = pd.to_datetime(df['date'], format="%y%m%d")
     df['account'] = pd.to_numeric(df['account'], errors='coerce').astype('Int64')
     df.to_csv(cleanPath, sep=",", index=False)

@@ -7,6 +7,7 @@ def clean_disp(rawPath, cleanPath):
       "account_id": "int64",
       "type": "object",
   })
+
   # print(df.dtypes)
   df.to_csv(cleanPath, sep=",", index=False)
   

@@ -20,7 +20,5 @@ def clean_client(rawPath, cleanPath):
   df["gender"] = df["birth_number"].apply(lambda date: 0 if int(date[2:4]) > 50 else 1)
   df["birth_number"] = df["birth_number"].apply(clear_month)
 
-  # print("Number of duplicates in client_id column: ", df["client_id"].duplicated().sum())
-
   df.to_csv(cleanPath, sep=",", index=False)  
 

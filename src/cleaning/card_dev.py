@@ -8,5 +8,6 @@ def clean_card_dev(rawPath, cleanPath):
         "issued": "object",
     })
     df['issued'] = pd.to_datetime(df['issued'], format="%y%m%d")
-    # print(df.dtypes)
+
     df.to_csv(cleanPath, sep=",", index=False)
+

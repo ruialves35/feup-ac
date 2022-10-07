@@ -10,6 +10,7 @@ def clean_loan_dev(rawPath, cleanPath):
         "payments": "int64",
         "status": "category",
     })
+
     df['date'] = pd.to_datetime(df['date'], format="%y%m%d")
     df['status'] = df['status'].cat.add_categories([0])
     df.loc[df.status == "-1", "status"] = 0

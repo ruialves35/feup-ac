@@ -8,5 +8,6 @@ def clean_account(rawPath, cleanPath):
         "date": "object",
     })
     df['date'] = pd.to_datetime(df['date'], format="%y%m%d")
-    # print(df.dtypes)
+
     df.to_csv(cleanPath, sep=",", index=False)
+
