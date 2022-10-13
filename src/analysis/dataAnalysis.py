@@ -2,7 +2,7 @@ import json
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+import seaborn as sb
 
 
 
@@ -10,7 +10,7 @@ import seaborn as sns
 account_data = pd.read_csv("./assets/clean/account.csv")
 card_data = pd.read_csv("./assets/clean/card_dev.csv")
 client_data = pd.read_csv("./assets/clean/client.csv")
-disp_data = pd.read_csv("./assets/clean/disp.csv", dtype={"disp_id": str, "client_id": str, "account_id": str, "type": str})
+disp_data = pd.read_csv("./assets/clean/disp.csv", dtype={"disp_id": int, "client_id": int, "account_id": int, "type": str})
 district_data = pd.read_csv("./assets/clean/district.csv")
 loan_data = pd.read_csv("./assets/clean/loan_dev.csv")
 transaction_data = pd.read_csv("./assets/clean/trans_dev.csv", dtype=
@@ -119,7 +119,30 @@ def check_null_attributes():
     transaction_data["account"].fillna(0, inplace=True)
     transaction_data["bank"].fillna("unknown", inplace=True)
 
+# Auxiliary method to join 2 datasets
+def join(df1, df2, key1, key2, suff, t="inner"):
+    return df1.merge(df2, left_on=key1, right_on=key2, how=t, suffixes=suff)
 
+def analyze_disposition():
+    print("=============================================\n")
+    print("Number of clients per disposition type:")
+    print(disp_data["type"].value_counts())
+
+    sb.displot(disp_data, x="type", hue="type")
+    plt.show()
+
+def join_acc_disposition():
+    acc_disp = join(account_data, disp_data, "account_id", "account_id", ["", "_disp"])
+    # acc_disp.rename(columns={"date": "acc_date"}, inplace=True)
+
+    # Count Groups
+    owner_count = acc_disp["account_id"].value_counts()
+    acc_disp["is_co-owned"] = acc_disp.apply(lambda row: True if owner_count[row["account_id"]] > 1 else False, axis='columns')
+    # Cleanup
+    acc_disp.drop(acc_disp[acc_disp["type"] == "DISPONENT"].index, inplace=True)
+    acc_disp.drop(columns=["type"], inplace=True)
+
+    return acc_disp
 
 
 # ========  ========
@@ -129,5 +152,6 @@ def check_null_attributes():
 # analyze_loans()
 # get_size()
 # get_missing_values()
-check_null_attributes()
-
+# check_null_attributes()
+df = join_acc_disposition()
+print(df.head(10))
