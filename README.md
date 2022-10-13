@@ -6,6 +6,16 @@
   - issuance after transaction
 
 
+
+## Credit Card
+
+### Type
+  - junior
+  - classic
+  - gold
+
+
+
 ## Transaction
 
 ### Type 
@@ -19,6 +29,7 @@
   - remittance to another bank
 
 
+
 ## Loan
 
 ### Duration
@@ -26,15 +37,6 @@
 
 ### Status (?)
 
-
-## Credit Card
-
-### Type
-  - junior
-  - classic
-  - gold
-
-###
 
 
 ## District
