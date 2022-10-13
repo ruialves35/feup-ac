@@ -28,7 +28,7 @@ def parse_k_symbol(k_symb):
 
 # ======== Analyze Size of each Dataset ========
 def get_size():
-    print("\n\n")
+    print("=============================================\n")
     print("Number of rows for each dataset: \n")
     print(f"Account: {len(account_data)}")
     print(f"Card: {len(card_data)}")
@@ -41,7 +41,7 @@ def get_size():
 
 # ======== Get missing values ========
 def get_missing_values():
-    print("\n\n")
+    print("=============================================\n")
     print("Missing values for each dataset: \n")
     print(f"Account: \n{account_data.isnull().sum()} \n")
     print(f"Card: \n{card_data.isnull().sum()} \n")
@@ -60,7 +60,7 @@ pd.set_option('display.width', 1000)
 
 # ======== Analyze paid loans % ========
 def analyze_loans():
-    print("\n\n")
+    print("=============================================\n")
     paid_loans = loan_data[loan_data["paid"] == 1]
     unpaid_loans = loan_data[loan_data["paid"] == 0]
     paid_loans_percentage = round((len(paid_loans)/len(loan_data)) * 100, 2)
@@ -79,7 +79,7 @@ def analyze_loans():
 
 # ======== Investigate attributes with a large quantity of nulls (operation, k_symbol, bank and account) ========
 def check_null_attributes():
-    print("\n\n")
+    print("=============================================\n")
     print("[Operation]:")
     print(transaction_data["operation"].value_counts())
     operationNullsPercentage = round(len(transaction_data[transaction_data["operation"].isnull()]) / len(transaction_data["operation"]) * 100, 2)
