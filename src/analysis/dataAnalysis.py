@@ -137,13 +137,43 @@ def join_acc_disposition():
 
     # Count Groups
     owner_count = acc_disp["account_id"].value_counts()
-    acc_disp["is_co-owned"] = acc_disp.apply(lambda row: True if owner_count[row["account_id"]] > 1 else False, axis='columns')
+    acc_disp["is_co-owned"] = acc_disp.apply(lambda row: 1 if owner_count[row["account_id"]] > 1 else 0, axis='columns')
     # Cleanup
     acc_disp.drop(acc_disp[acc_disp["type"] == "DISPONENT"].index, inplace=True)
     acc_disp.drop(columns=["type"], inplace=True)
+    ''' TODO: The column "disp_id" might also be useless since it's a 1-1 relation with the account now. But we
+     will drop it after proving the correlation between the 2 attributes.'''
 
     return acc_disp
 
+def join_clients(df : pd.DataFrame):
+    df = join(df, client_data, "client_id", "client_id", ["", "_client"], t="left")
+    # df.rename(columns={"age": "client_age"}, inplace=True)
+    df.drop(['client_id'], axis='columns', inplace=True)
+    return df
+
+def join_districts(df : pd.DataFrame):
+    df = join(df, district_data, "district_id_client", "code", ["", "_district"], t="inner")
+    df.drop(['district_id_client'], axis='columns', inplace=True)
+
+    df = join(df, district_data, "district_id", "code", ["_aDistrict", "_cDistrict"], t="inner")
+    df.drop(['district_id'], axis='columns', inplace=True)
+
+    return df
+
+def join_datasets():
+    print("============= Joining Datasets =============\n")
+    # Joining Accounts with Disposition
+    df = join_acc_disposition()
+    #print(df.head(10))
+
+    # Joining with Clients
+    df = join_clients(df)
+    df = join_districts(df)
+
+
+
+    print(df)
 
 # ========  ========
 # joined_data = account_data.join(loan_data, on='account_id', how='right', lsuffix='_account', rsuffix='_loan')
@@ -153,5 +183,7 @@ def join_acc_disposition():
 # get_size()
 # get_missing_values()
 # check_null_attributes()
-df = join_acc_disposition()
-print(df.head(10))
+# analyze_disposition()
+join_datasets()
+
+

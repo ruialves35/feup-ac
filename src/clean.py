@@ -7,8 +7,8 @@ from cleaning.trans_dev import clean_trans_dev
 from cleaning.disp import clean_disp
 from cleaning.district import clean_district
 
-RAW_PATH = "../assets/raw/"
-CLEAN_PATH = "../assets/clean/"
+RAW_PATH = "./assets/raw/"
+CLEAN_PATH = "./assets/clean/"
 
 print("Cleaning data files inside assets/raw/ ...\n")
 
