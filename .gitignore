@@ -1,5 +1,10 @@
 # ignore pycache
 __pycache__/
-*.csv#
-*.ipynb
+*.csv
+
+# DELETE THIS LATER
+src/analysis/Banking.ipynb 
+
+*.ipynb_checkpoints/
+
 assets/clean/*
