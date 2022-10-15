@@ -1,4 +1,3 @@
-import shutil
 from cleaning.account import clean_account
 from cleaning.card_dev import clean_card_dev
 from cleaning.client import clean_client
