@@ -176,8 +176,6 @@ def join_datasets():
     print(df)
 
 # ========  ========
-# joined_data = account_data.join(loan_data, on='account_id', how='right', lsuffix='_account', rsuffix='_loan')
-# print(joined_data)
 
 # analyze_loans()
 # get_size()
