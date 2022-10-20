@@ -10,11 +10,13 @@ A user wants to use the system to improve their business's profits. For that, th
 
 ## Definition of business goals
 
-In terms of business, the objectives are to understand if a loan will be paid and, that way, decide if we should give the loan or not to a specific account. That way, the money spent on unpaid loans will significantly decrease. On the other hand, the company can accept a loan of a person who would otherwise be rejected and, that way, increase their profits.
+In terms of business, the objectives are to understand if a loan will be paid and decide if we should give the loan or not to a specific account. 
+That way, the main goal is to reduce the number of loans that weren't paid in around 85%, so the company will have most of it's money invested returned. This will lead to an huge cost reduction and more successfull loans. 
+
 
 ## Translation of business goals into data mining goal
 
-The main goal of the data mining to be done on this project is to determine when a Loan, associated with an Account, will end successfully, that is, will be totally paid. Therefore, the data mining goals can be defined as follows:
+The goal of the data mining to be done on this project is to determine when a Loan, associated with an Account, won't end successfully, that is, it will not be totally paid. Therefore, the data mining goals can be defined as follows:
 
 - Collect a dataset containing a significant amount of loans, clients and other bank information.
 
