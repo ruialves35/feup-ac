@@ -27,12 +27,15 @@ def chi_square_test(df, column1, column2):
       print("H0 accepted")
     # p-value is less than 0.05, so we reject H0 and conclude that type and operation are dependent
 
-# anova f-test
+
+# anova test
+# assess the amount of variability between the group means in the context of the variation
+# within groups to determine whether the mean differences are statistically significant
 # H0: mean of all groups are equal
 # H1: mean of at least one group is different
 # df = dataframe
 # columns = columns to analyse
-def anova_f_test(df, column1, column2):
+def anova_test(df, column1, column2):
     alpha = 0.05
     # make anova f-test on type and operation columns of df
     print(df.head())
@@ -44,7 +47,7 @@ def anova_f_test(df, column1, column2):
       print("H0 rejected")
     else:
       print("H0 accepted")
-    # p-value is less than 0.05, so we reject H0 and conclude that type and operation are dependent
+    # p-value is less than 0.05, so we reject H0 and conclude that columns are independent
 
 # spearmant correlation test
 # numerical - numerical
@@ -74,7 +77,7 @@ print("Doing chi-square test...")
 #chi_square_test(df)
 print("\n-----------------\n")
 print("Doing anova f-test...")
-#anova_f_test(df)
+#anova_test(df)
 print("\n-----------------\n")
 print("Doing spearman correlation test...")
 spearman_correlation(df, "municip499", "municip500_1999")
