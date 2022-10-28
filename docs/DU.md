@@ -115,6 +115,14 @@ We saw that the payments, amount and duration attributes are related, having pay
 
 ## Verify Data Quality
 
+- Analyze each Dataset Size
+- Get number of missing values
+- Percentage of paid loans
+- Analyze of attributes with null values.
+
+
+
+
 ## Diversity of statistical methods
 
 ## Complexity of statistical methods
