@@ -1,3 +1,4 @@
+from genericpath import exists
 from cleaning.account import clean_account
 from cleaning.card_dev import clean_card_dev
 from cleaning.client import clean_client
@@ -5,11 +6,14 @@ from cleaning.loan_dev import clean_loan_dev
 from cleaning.trans_dev import clean_trans_dev
 from cleaning.disp import clean_disp
 from cleaning.district import clean_district
+import os
 
 RAW_PATH = "./assets/raw/"
 CLEAN_PATH = "./assets/clean/"
 
 print("Cleaning data files inside assets/raw/ ...\n")
+if not os.path.exists("./assets/clean/"):
+    os.mkdir("./assets/clean/")
 
 print("Cleaning account.csv ...")
 clean_account(RAW_PATH + "account.csv", CLEAN_PATH + "account.csv")
