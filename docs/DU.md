@@ -12,6 +12,7 @@ The dataset consist on 8 relations:
 - relation credit card (892 objects) - each record describes a credit card issued to an account,
 - relation demographic data (77 objects) - each record describes demographic characteristics of a district.
 
+----
 
 ### Account Relation
 - account_id - identification of the account (categorical and nominal)
@@ -24,10 +25,14 @@ The attribute Frequency it's composed by 3 options:
 - "monthly issuance"
 - "issuance after transaction"
 
+----
+
 ### Client Relation
 - client_id - client identifier (categorical and nominal)
 - birth number - birthday and sex: the number is in the form YYMMDD for men, YYMM+50DD for women, where YYMMDD is the date of birth (object)
 - district_id - address of the client (categorical and nominal)
+
+----
 
 ### Disposition Relation
 - disp_id - record identifier (categorical and nominal)
@@ -35,7 +40,7 @@ The attribute Frequency it's composed by 3 options:
 - account_id - identification of an account (categorical and nominal)
 - type - type of disposition (owner/user): only owner can issue permanent orders and ask for a loan (categorical and nominal)
 
-	 
+----
 
 ### Credit Card Relation
 - card_id - record identifier (categorical and nominal)
@@ -48,7 +53,7 @@ The possible values for type card are:
 - "classic"
 - "gold"
 
-
+----
 
 ### Transaction Relation
 
@@ -69,7 +74,7 @@ The possible values for operation are:
 - "withdrawal in cash"
 - "remittance to another bank"
 
-
+----
 
 ### Loan
 
@@ -85,6 +90,7 @@ The duration attribute's unit is months.
 
 We saw that the payments, amount and duration attributes are related, having payments = amount / duration. This way, one of those should be discarded (payments?).
 
+----
 
 ### District
 
@@ -105,6 +111,7 @@ We saw that the payments, amount and duration attributes are related, having pay
 - no. of commited crimes '95 (numeric ratio)
 - no. of commited crimes '96 (numeric ratio)
 
+----
 
 ## Verify Data Quality
 
