@@ -1,7 +1,5 @@
-import pandas as pd
 import scipy.stats as stats
 
-CLEAN_PATH = "../../assets/clean/"
 
 ## Chi-square test
 # H0: type and operation are independent
@@ -69,15 +67,3 @@ def spearman_correlation(df, column1, column2):
     else:
       print("H0 accepted")
     # p-value is less than 0.05, so we reject H0 and conclude that type and operation are dependent
-
-
-#df = pd.read_csv(CLEAN_PATH + "trans_dev.csv")
-df = pd.read_csv(CLEAN_PATH + "district.csv")
-print("Doing chi-square test...")
-#chi_square_test(df)
-print("\n-----------------\n")
-print("Doing anova f-test...")
-#anova_test(df)
-print("\n-----------------\n")
-print("Doing spearman correlation test...")
-spearman_correlation(df, "municip499", "municip500_1999")
