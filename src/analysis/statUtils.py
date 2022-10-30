@@ -1,3 +1,4 @@
+import pandas as pd
 import scipy.stats as stats
 
 
@@ -54,6 +55,7 @@ def anova_test(df, column1, column2):
 # H1: there is a correlation between the two variables
 # df = dataframe
 # columns = columns to analyse
+# NOTE: Spearman's correlation should not be used when there are ties in the ranking
 def spearman_correlation(df, column1, column2):
     alpha = 0.05
 
