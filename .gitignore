@@ -2,9 +2,4 @@
 __pycache__/
 *.csv
 
-# DELETE THIS LATER
-src/analysis/Banking.ipynb 
-
-*.ipynb_checkpoints/
-
 assets/clean/
