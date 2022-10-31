@@ -22,6 +22,7 @@ def clean_district(rawPath, cleanPath):
         "no. of municipalities with inhabitants 500-1999": "municip500_1999",
         "no. of municipalities with inhabitants 2000-9999": "municip2000_9999",
         "no. of municipalities with inhabitants >10000": "municip10000",
+        "no. of cities": "num_cities",
         "ratio of urban inhabitants": "urban_ratio",
         "average salary": "avg_salary",
         "unemploymant rate '95": "unemp_rate95",
@@ -36,6 +37,10 @@ def clean_district(rawPath, cleanPath):
     df["unemp_rate96"] = df["unemp_rate96"].replace("?", "")
     df["num_crimes95"] = df["num_crimes95"].replace("?", "")
     df["num_crimes96"] = df["num_crimes96"].replace("?", "")
+    df['num_crimes95'] = pd.to_numeric(df['num_crimes95'], errors='coerce').astype('Int64')
+    df['num_crimes96'] = pd.to_numeric(df['num_crimes96'], errors='coerce').astype('Int64')
+    df["num_crimes95_ratio"] = 1000 * df["num_crimes95"] / df["num_inhabitants"]
+    df["num_crimes96_ratio"] = 1000 * df["num_crimes96"] / df["num_inhabitants"]
 
 
     df.to_csv(cleanPath, sep=",", index=False)

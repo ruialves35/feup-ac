@@ -12,8 +12,8 @@ RAW_PATH = "./assets/raw/"
 CLEAN_PATH = "./assets/clean/"
 
 print("Cleaning data files inside assets/raw/ ...\n")
-if not os.path.exists("./assets/clean/"):
-    os.mkdir("./assets/clean/")
+if not os.path.exists(CLEAN_PATH):
+    os.mkdir(CLEAN_PATH)
 
 print("Cleaning account.csv ...")
 clean_account(RAW_PATH + "account.csv", CLEAN_PATH + "account.csv")
