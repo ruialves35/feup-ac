@@ -8,8 +8,8 @@ from cleaning.disp import clean_disp
 from cleaning.district import clean_district
 import os
 
-RAW_PATH = "../assets/raw/"
-CLEAN_PATH = "../assets/clean/"
+RAW_PATH = "./assets/raw/"
+CLEAN_PATH = "./assets/clean/"
 
 print("Cleaning data files inside assets/raw/ ...\n")
 if not os.path.exists(CLEAN_PATH):
