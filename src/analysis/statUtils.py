@@ -1,5 +1,22 @@
 import pandas as pd
 import scipy.stats as stats
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sb
+
+# pearson correlation test
+def pearson_correlation(df, column1, column2):
+    alpha = 0.05
+
+    # print(df.head())
+    # make spearman correlation
+    correlation, p = stats.pearsonr(df[column1], df[column2])
+    print("correlation: ", correlation, "p: ", p)
+    if p < alpha:
+        print("H0 rejected")
+    else:
+        print("H0 accepted")
+    # p-value is less than 0.05, so we reject H0 and conclude that type and operation are dependent
 
 
 ## Chi-square test
@@ -69,3 +86,19 @@ def spearman_correlation(df, column1, column2):
     else:
       print("H0 accepted")
     # p-value is less than 0.05, so we reject H0 and conclude that type and operation are dependent
+
+
+def plot_corr(df, features, methodName="spearman", annot=True, figSize=(5.0, 5.0)):
+    # Create Correlation matrix
+    corr_matrix = df[features].corr(method=methodName, numeric_only=True)   # Only plot numerical attributes
+
+    # mask upper triangle
+    mask = np.zeros_like(corr_matrix, dtype=bool)
+    mask[np.triu_indices_from(mask)] = True
+
+    # Create heatmap
+    plt.figure(figsize=figSize)
+    plt.title("Correlation Heatmap")
+    sb.heatmap(corr_matrix, mask=mask, annot=annot, fmt=".2",
+                   linecolor='black', linewidths=.5, square=True)
+    plt.show()
