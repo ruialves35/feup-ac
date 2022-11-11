@@ -14,10 +14,14 @@ However, it's important to prioritize the loans that will not be paid, since tho
 
 ## Definition of business goals
 
-Currently, many bank companies give a lot of loans that are not paid, which leads to huge monetary losses.
-Reducing these losses is the main business goal of this project.
+Currently, many bank companies give a lot of loans that are not paid, which leads to huge monetary losses. In the dataset
+provided, the company lost 8.2 million 20CZK on loans that were not paid, and won 39.4 million 20CZK on loans paid, leading to
+around 83% of the money invested returned.
+Reducing these losses is extremely important and the main business goal of this project.
 
-This way, it should accomplish a reduction of at least 85% of unpaid loans, so that the company will have most of its money "invested" in clients returned. Despite this reduction, it's also important not to reduce the profits made by the company, thus the % of paid loans should not decrease (leading to an increase in profits).
+This way, the project should accomplish a reduction of at least 85% of unpaid loans, so that the company will have most of its money "invested" in clients returned.
+Despite this reduction, it's also important not to reduce the profits made by the company, thus the % of paid loans should not decrease (leading to an increase in profits).
+In the dataset provided, this would lead to a returned of the money invested of, approximately, 97%, having a loss of around 1.2 million 20CZK and profit of 39.4 million 20CZK. 
 
 ----
 
