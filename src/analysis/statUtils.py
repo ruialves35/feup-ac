@@ -3,6 +3,8 @@ import scipy.stats as stats
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sb
+from sklearn.feature_selection import SelectKBest
+from sklearn.feature_selection import f_classif
 
 # pearson correlation test
 def pearson_correlation(df, column1, column2):
@@ -18,19 +20,20 @@ def pearson_correlation(df, column1, column2):
         print("H0 accepted")
     # p-value is less than 0.05, so we reject H0 and conclude that type and operation are dependent
 
-
-## Chi-square test
-# H0: type and operation are independent
-# H1: type and operation are dependent
+# chi square test
+# Type of Variables: categorical - categorical 
+# H0: there is no association between the independent variables and the dependent variable (Null Hypothesis)
+# H1: there is an association between the independent variables and the dependent variable (Alternative Hypothesis)
 # df = dataframe
-# columns = columns to analyse
-def chi_square_test(df, column1, column2):
+# columns = columns to analyze
+def chi_square_test(df, columns):
     alpha = 0.05
     # make chi-square test on type and operation columns of df
     #print(df.head())
     # make contingency table
-    contingency_table = pd.crosstab(df[column1], df[column2])
-    #print(contingency_table)
+    contingency_table = pd.crosstab(df["paid"], [df[column] for column in columns])
+    #print("contingency table: ", contingency_table)
+    
     # make chi-square test
     chi2, p, dof, expected = stats.chi2_contingency(contingency_table)
     print("chi2: ", chi2)
@@ -43,27 +46,25 @@ def chi_square_test(df, column1, column2):
       print("H0 accepted")
     # p-value is less than 0.05, so we reject H0 and conclude that type and operation are dependent
 
-
 # anova test
 # assess the amount of variability between the group means in the context of the variation
-# within groups to determine whether the mean differences are statistically significant
-# H0: mean of all groups are equal
-# H1: mean of at least one group is different
-# df = dataframe
-# columns = columns to analyse
-def anova_test(df, column1, column2):
-    alpha = 0.05
-    # make anova f-test on type and operation columns of df
-    print(df.head())
-    # make anova f-test
-    f, p = stats.f_oneway(df[column1], df[column2])
-    print("f: ", f)
-    print("p: ", p)
-    if p < alpha:
-      print("H0 rejected")
-    else:
-      print("H0 accepted")
-    # p-value is less than 0.05, so we reject H0 and conclude that columns are independent
+# cols = columns to analyse
+# k = number of features to return
+def anova_test(df, cols, k="all"):
+    # Apply selectKBest to get the "k" best features
+    bestFeatures = SelectKBest(score_func=f_classif, k=k)
+    df_cut = df[cols]
+    fit = bestFeatures.fit(df_cut, df["paid"])
+    
+    dfScores = pd.DataFrame(fit.scores_)
+    dfColumns = pd.DataFrame(df_cut.columns)
+
+    # Concat two dataframes for better visualization
+    featureScores = pd.concat([dfColumns, dfScores], axis=1)
+    featureScores.columns = ['Features', 'Score']  # Naming the dataframe columns
+
+    ret = featureScores.sort_values(by='Score', ascending=False)
+    return ret.head(k) if k != "all" else ret
 
 # spearmant correlation test
 # numerical - numerical
