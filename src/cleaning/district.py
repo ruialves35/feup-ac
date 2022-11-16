@@ -32,10 +32,12 @@ def clean_district(rawPath, cleanPath):
         "no. of commited crimes '96": "num_crimes96",
     }, inplace=True)
 
+    # TODO: num_crimes95 has some values as "?". We need to change them so that we can convert to int
+
     # Replace "?" occurrences by an empty string
     df["unemp_rate95"] = df["unemp_rate95"].replace("?", "")
     df["unemp_rate96"] = df["unemp_rate96"].replace("?", "")
-    df["num_crimes95"] = df["num_crimes95"].replace("?", "")
+    df["num_crimes95"] = df["num_crimes95"].replace("?", "").replace("none")
     df["num_crimes96"] = df["num_crimes96"].replace("?", "")
     df['num_crimes95'] = pd.to_numeric(df['num_crimes95'], errors='coerce').astype('Int64')
     df['num_crimes96'] = pd.to_numeric(df['num_crimes96'], errors='coerce').astype('Int64')
