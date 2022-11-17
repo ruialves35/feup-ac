@@ -1,5 +1,10 @@
 import pandas as pd
 
+import sys
+sys.path.append('../')
+
+from src.analysis.utils import predictColumnLR
+
 def clean_district(rawPath, cleanPath):
     df = pd.read_csv(rawPath, sep=";", dtype= {
         "code ": "int64",
@@ -37,12 +42,12 @@ def clean_district(rawPath, cleanPath):
     # Replace "?" occurrences by an empty string
     df["unemp_rate95"] = df["unemp_rate95"].replace("?", "")
     df["unemp_rate96"] = df["unemp_rate96"].replace("?", "")
-    df["num_crimes95"] = df["num_crimes95"].replace("?", "").replace("none")
+    df["num_crimes95"] = df["num_crimes95"].replace("?", None).replace("none", None)
+    df = predictColumnLR(df, "num_crimes95", ["num_inhabitants", "municip499", "municip500_1999", "municip2000_9999", "municip10000", "num_cities","urban_ratio", "avg_salary", "num_entrepreneurs", "num_crimes95", "num_crimes96"])
     df["num_crimes96"] = df["num_crimes96"].replace("?", "")
-    df['num_crimes95'] = pd.to_numeric(df['num_crimes95'], errors='coerce').astype('Int64')
-    df['num_crimes96'] = pd.to_numeric(df['num_crimes96'], errors='coerce').astype('Int64')
+    df['num_crimes95'] = pd.to_numeric(df['num_crimes95'], errors='coerce').astype('float64')
+    df['num_crimes96'] = pd.to_numeric(df['num_crimes96'], errors='coerce').astype('float64')
     df["num_crimes95_ratio"] = 1000 * df["num_crimes95"] / df["num_inhabitants"]
     df["num_crimes96_ratio"] = 1000 * df["num_crimes96"] / df["num_inhabitants"]
-
 
     df.to_csv(cleanPath, sep=",", index=False)
