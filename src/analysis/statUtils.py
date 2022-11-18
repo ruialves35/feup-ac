@@ -26,12 +26,12 @@ def pearson_correlation(df, column1, column2):
 # H1: there is an association between the independent variables and the dependent variable (Alternative Hypothesis)
 # df = dataframe
 # columns = columns to analyze
-def chi_square_test(df, columns):
+def chi_square_test(df, columns, target = "paid"):
     alpha = 0.05
     # make chi-square test on type and operation columns of df
     #print(df.head())
     # make contingency table
-    contingency_table = pd.crosstab(df["paid"], [df[column] for column in columns])
+    contingency_table = pd.crosstab(df[target], [df[column] for column in columns])
     #print("contingency table: ", contingency_table)
     
     # make chi-square test
@@ -46,15 +46,16 @@ def chi_square_test(df, columns):
       print("H0 accepted")
     # p-value is less than 0.05, so we reject H0 and conclude that type and operation are dependent
 
+
 # anova test
 # assess the amount of variability between the group means in the context of the variation
 # cols = columns to analyse
 # k = number of features to return
-def anova_test(df, cols, k="all"):
+def anova_test(df, cols, k="all", target="paid"):
     # Apply selectKBest to get the "k" best features
     bestFeatures = SelectKBest(score_func=f_classif, k=k)
     df_cut = df[cols]
-    fit = bestFeatures.fit(df_cut, df["paid"])
+    fit = bestFeatures.fit(df_cut, df[target])
     
     dfScores = pd.DataFrame(fit.scores_)
     dfColumns = pd.DataFrame(df_cut.columns)
@@ -83,9 +84,9 @@ def spearman_correlation(df, column1, column2):
     print("correlation: ", correlation)
     print("p: ", p)
     if p < alpha:
-      print("H0 rejected")
+      print("H0 rejected, so there is a correlation between the two variables")
     else:
-      print("H0 accepted")
+      print("H0 accepted, so there is no correlation between the two variables")
     # p-value is less than 0.05, so we reject H0 and conclude that type and operation are dependent
 
 
