@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+from category_encoders.cat_boost import CatBoostEncoder
 
 ## Function to calculate the linear regression
 ## and imput the missing values
@@ -29,3 +30,21 @@ def predictColumnLR(df, column, columns = ['num_inhabitants', 'municip499', 'mun
     no_val_df[column]= pred
 
     return pd.concat([val_df, no_val_df])
+
+
+# Transform the categorical columns into numerical values using CatBoostEncoder
+def cat_boost_encode(df, cols):
+    target = df['paid']
+    df.drop(['paid'], axis='columns', inplace=True)
+    encoder = CatBoostEncoder(cols=cols)
+
+    encoder.fit(df, target)
+    df = encoder.transform(df)
+
+    df['paid'] = target
+    return df
+
+# Do one hot encoding on cols of data frame
+def one_hot_encode(df, cols):
+  df = pd.get_dummies(df, columns=cols)
+  return df
