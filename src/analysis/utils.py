@@ -27,7 +27,7 @@ def predictColumnLR(df, column, columns = ['num_inhabitants', 'municip499', 'mun
 
     pred = lr.predict(testdf)
     print(column, " predictions = ", pred)
-    no_val_df[column]= pred
+    no_val_df[column] = pred
 
     return pd.concat([val_df, no_val_df])
 
