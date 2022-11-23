@@ -7,16 +7,15 @@ from cleaning.disp import clean_disp
 from cleaning.district import clean_district
 import os
 
-IS_COMPETITION = False
+IS_COMPETITION = True
 
+RAW_PATH = "../assets/raw/"
 if not IS_COMPETITION:
-    RAW_PATH = "../assets/raw/"
     CLEAN_PATH = "../assets/clean/"
     CARD_FILE = "card_dev.csv"
     LOAN_FILE = "loan_dev.csv"
     TRANS_FILE = "trans_dev.csv"
 else:
-    RAW_PATH = "../assets/kaggle/"
     CLEAN_PATH = "../assets/kaggleClean/"
     CARD_FILE = "card_comp.csv"
     LOAN_FILE = "loan_comp.csv"
