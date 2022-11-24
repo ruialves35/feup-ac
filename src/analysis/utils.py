@@ -33,16 +33,22 @@ def predictColumnLR(df, column, columns = ['num_inhabitants', 'municip499', 'mun
 
 
 # Transform the categorical columns into numerical values using CatBoostEncoder
-def cat_boost_encode(df, cols):
+def cat_boost_encode(df, cols, df_test):
     target = df['paid']
     df.drop(['paid'], axis='columns', inplace=True)
     encoder = CatBoostEncoder(cols=cols)
 
     encoder.fit(df, target)
     df = encoder.transform(df)
-
     df['paid'] = target
-    return df
+
+    curr_paid = df_test['paid']
+    df_test.drop(['paid'], axis='columns', inplace=True)
+    df_test = encoder.transform(df_test)
+    df_test['paid'] = curr_paid
+
+    return (df, df_test)
+   
 
 # Do one hot encoding on cols of data frame
 def one_hot_encode(df, cols):
