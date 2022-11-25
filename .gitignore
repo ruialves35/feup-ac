@@ -1,7 +1,5 @@
 # ignore pycache
 __pycache__/
-*.csv
 
-assets/clean/*
-assets/joined/*
-assets/final/*
+assets/*
+!assets/raw
