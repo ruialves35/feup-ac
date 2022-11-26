@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.metrics import roc_auc_score, roc_curve, auc
+from sklearn.metrics import roc_curve, auc
 
-SHOW_GRAPH = False
+SHOW_GRAPH = True
 
 SUBMISSION_PATH = "../assets/results/submission.csv"
 RESULTS_PATH = "../assets/complete_clean/loan_dev.csv"

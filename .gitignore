@@ -3,3 +3,4 @@ __pycache__/
 
 assets/*
 !assets/raw
+!assets/complete_clean
