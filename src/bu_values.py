@@ -33,6 +33,6 @@ def plot_loan_values(paid, not_paid):
   plt.show()
 
 paid, not_paid = get_loan_values()
-paid, not_paid = [paid // 1000000, not_paid // 1000000]
+paid, not_paid = [round(paid / 1000000, 1), round(not_paid / 1000000, 1)]
 
 plot_loan_values(paid, not_paid)

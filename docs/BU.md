@@ -25,7 +25,9 @@ Despite this reduction, it's also important not to reduce the profits made by th
 
 In the dataset provided, this would lead to a return of the money invested of, approximately, 97%, having losses of around 1.2 million CZK and 
 maintaining profits of 39.4 million CZK.
- 
+
+![Loan Success](bu_values.png)
+
 ----
 
 ## Translation of business goals into data mining goals
