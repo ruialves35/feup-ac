@@ -7,7 +7,7 @@ from cleaning.disp import clean_disp
 from cleaning.district import clean_district
 import os
 
-IS_COMPETITION = True
+IS_COMPETITION = False
 
 RAW_PATH = "../assets/raw/"
 if not IS_COMPETITION:
