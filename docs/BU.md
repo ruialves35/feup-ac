@@ -23,8 +23,8 @@ a reduction of at least 85% of unpaid loans, so that the company will have most 
 
 Despite this reduction, it's also important not to reduce the profits made by the company, thus the % of paid loans should not decrease (leading to an increase in profits).
 
-In the dataset provided, this would lead to a return of the money invested of, approximately, 97%, having losses of around 1.2 million 20CZK and 
-maintaining profits of 39.4 million 20CZK.
+In the dataset provided, this would lead to a return of the money invested of, approximately, 97%, having losses of around 1.2 million CZK and 
+maintaining profits of 39.4 million CZK.
  
 ----
 
