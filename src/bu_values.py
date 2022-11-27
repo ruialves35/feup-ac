@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # function that reads the values from assets/clean/loan_dev.csv
 # and calculates the quantity of paid and not paid loans
@@ -14,4 +15,24 @@ def get_loan_values():
   # return the values
   return paid_sum, not_paid_sum
 
-print(get_loan_values())
+# function that barplots with the values of paid and not paid loans
+def plot_loan_values(paid, not_paid):
+  # change colors of the bars
+  plt.bar(['paid', 'not paid'], [paid, not_paid], color=['green', 'red'])
+
+  for i, v in enumerate([paid, not_paid]):
+    plt.text(i, v, str(v), color='black', ha='center')
+  
+  # set the title
+  plt.title('Loan Success')
+
+  # set the x and y labels
+  plt.ylabel('Loan value (M/CZK)')
+
+  # show the plot
+  plt.show()
+
+paid, not_paid = get_loan_values()
+paid, not_paid = [paid // 1000000, not_paid // 1000000]
+
+plot_loan_values(paid, not_paid)
